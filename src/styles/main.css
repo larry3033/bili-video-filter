@@ -1,0 +1,270 @@
+/* ==========================================
+   B站视频滤镜 — 面板样式
+   集成在播放器控制栏，匹配 B站深色UI
+   ========================================== */
+
+/* ---- 主面板 (fixed 定位, 在 body 上) ---- */
+.bvf-panel {
+    box-sizing: border-box;
+    position: fixed;
+    width: 290px;
+    max-height: 520px;
+    flex-direction: column;
+    font-size: 12px;
+    padding: 0;
+    text-align: left;
+    color: #fff;
+    display: none;
+    user-select: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100000;
+}
+.bvf-panel::-webkit-scrollbar { width: 4px; }
+.bvf-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+.bvf-panel-inner {
+    padding: 10px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ---- 侧面板 (高级区, fixed 定位, 独立滚动) ---- */
+.bvf-adv-panel {
+    box-sizing: border-box;
+    position: fixed;
+    width: 250px;
+    max-height: 480px;
+    flex-direction: column;
+    font-size: 12px;
+    text-align: left;
+    color: #fff;
+    display: none;
+    user-select: none;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    z-index: 100000;
+}
+.bvf-adv-panel::-webkit-scrollbar { width: 4px; }
+.bvf-adv-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+.bvf-adv-panel-inner {
+    padding: 10px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ---- 分区 ---- */
+.bvf-section { display: flex; flex-direction: column; gap: 6px; }
+.bvf-section-title {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+.bvf-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 8px 0;
+}
+
+/* ---- 预设按钮网格 ---- */
+.bvf-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+.bvf-preset-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 4px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 11px;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.bvf-preset-btn:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+.bvf-preset-btn.active {
+    background: rgba(247, 37, 133, 0.2);
+    border-color: #f72585;
+    color: #f72585;
+}
+.bvf-preset-icon { font-size: 16px; }
+
+/* ---- 参数滑条 ---- */
+.bvf-slider-row {
+    display: grid;
+    grid-template-columns: 36px 1fr 44px 20px;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 3px;
+}
+.bvf-slider-label { font-size: 11px; color: #bbb; text-align: right; }
+
+.bvf-slider-input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.15);
+    outline: none;
+    cursor: pointer;
+}
+.bvf-slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #4cc9f0;
+    cursor: pointer;
+    border: 1.5px solid #222;
+    transition: transform 0.12s;
+}
+.bvf-slider-input::-webkit-slider-thumb:hover { transform: scale(1.25); }
+.bvf-slider-input::-moz-range-thumb {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #4cc9f0; border: 1.5px solid #222; cursor: pointer;
+}
+
+/* ---- 数字输入框 ---- */
+.bvf-slider-num {
+    width: 44px;
+    height: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 3px;
+    color: #4cc9f0;
+    text-align: center;
+    font-size: 10px;
+    outline: none;
+    padding: 0 2px;
+    -moz-appearance: textfield;
+}
+.bvf-slider-num:focus {
+    border-color: #4cc9f0;
+    background: rgba(255,255,255,0.14);
+}
+.bvf-slider-num::-webkit-outer-spin-button,
+.bvf-slider-num::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ---- 一键还原按钮 ---- */
+.bvf-slider-reset {
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    color: #666;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.bvf-slider-reset:hover {
+    color: #f72585;
+    background: rgba(247,37,133,0.12);
+    border-color: rgba(247,37,133,0.3);
+}
+
+/* ---- 高级切换按钮 (主面板内) ---- */
+.bvf-advanced-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 5px;
+    color: #aaa;
+    font-size: 12px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.bvf-advanced-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.bvf-advanced-btn.active { background: rgba(76,201,240,0.12); border-color: rgba(76,201,240,0.3); color: #4cc9f0; }
+.bvf-chevron { font-size: 10px; }
+
+/* 高级区分组 */
+.bvf-adv-group {
+    padding: 6px 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 4px;
+    border-left: 2px solid rgba(255,255,255,0.08);
+}
+.bvf-adv-group-title {
+    font-size: 10px;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+/* 高级区行 */
+.bvf-adv-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    padding: 2px 0;
+}
+.bvf-adv-row label { color: #999; }
+.bvf-adv-row input {
+    width: 60px;
+    height: 22px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+    outline: none;
+    padding: 0 4px;
+    -moz-appearance: textfield;
+}
+.bvf-adv-row input:focus { border-color: #4cc9f0; }
+.bvf-adv-row input::-webkit-outer-spin-button,
+.bvf-adv-row input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Kernel 3×3 网格 */
+.bvf-kernel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    width: fit-content;
+    margin-top: 2px;
+}
+.bvf-kernel-grid input {
+    width: 48px;
+    height: 22px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    outline: none;
+    padding: 0 2px;
+    -moz-appearance: textfield;
+}
+.bvf-kernel-grid input:focus { border-color: #f72585; }
+.bvf-kernel-grid input::-webkit-outer-spin-button,
+.bvf-kernel-grid input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ---- hover 禁用 ---- */
+.bpx-player-ctrl-vfilter:hover { animation: none !important; }

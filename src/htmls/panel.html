@@ -1,0 +1,112 @@
+<div class="bpx-player-ctrl-btn bpx-player-ctrl-vfilter" role="button" aria-label="视频滤镜">
+  <!-- 滤镜按钮图标 -->
+  <div class="bpx-player-ctrl-btn-icon">
+    <span class="bpx-common-svg-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+    </span>
+  </div>
+
+  <!-- ===== 主面板 ===== -->
+  <div class="bvf-panel bui-panel bui-dark" id="bvf-main-panel">
+    <div class="bvf-panel-inner">
+
+      <!-- 预设 -->
+      <div class="bvf-section">
+        <div class="bvf-section-title">预设</div>
+        <div class="bvf-preset-grid" id="bvf-preset-grid"></div>
+      </div>
+
+      <div class="bvf-divider"></div>
+
+      <!-- 参数滑条 -->
+      <div class="bvf-section">
+        <div class="bvf-section-title">参数</div>
+        <div class="bvf-sliders" id="bvf-sliders"></div>
+      </div>
+
+      <div class="bvf-divider"></div>
+
+      <!-- 高级切换按钮 -->
+      <div class="bvf-section">
+        <button class="bvf-advanced-btn" id="bvf-advanced-toggle">
+          <span>⚙ 高级</span>
+          <span class="bvf-chevron">▸</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 高级侧面板 ===== -->
+  <div class="bvf-adv-panel bui-panel bui-dark" id="bvf-adv-panel" style="display:none">
+    <div class="bvf-adv-panel-inner">
+
+      <!-- feColorMatrix · 色温 -->
+      <div class="bvf-adv-group">
+        <div class="bvf-adv-group-title">feColorMatrix · 色温</div>
+        <div class="bvf-adv-row">
+          <label>R通道</label><input type="number" id="bvf-adv-temp-r" step="0.01" value="1.00">
+        </div>
+        <div class="bvf-adv-row">
+          <label>G通道</label><input type="number" id="bvf-adv-temp-g" step="0.01" value="1.00">
+        </div>
+        <div class="bvf-adv-row">
+          <label>B通道</label><input type="number" id="bvf-adv-temp-b" step="0.01" value="1.00">
+        </div>
+      </div>
+
+      <!-- feColorMatrix · 饱和度 -->
+      <div class="bvf-adv-group">
+        <div class="bvf-adv-group-title">feColorMatrix · 饱和度</div>
+        <div class="bvf-adv-row">
+          <label>Saturate</label><input type="number" id="bvf-adv-sat" step="0.05" min="0" max="3" value="1">
+        </div>
+      </div>
+
+      <!-- feComponentTransfer · 色调映射 -->
+      <div class="bvf-adv-group">
+        <div class="bvf-adv-group-title">feComponentTransfer · 色调映射</div>
+        <div class="bvf-adv-row">
+          <label>Gamma</label><input type="number" id="bvf-adv-gamma" step="0.01" min="0.2" max="5" value="1.00">
+        </div>
+        <div class="bvf-adv-row">
+          <label>斜率</label><input type="number" id="bvf-adv-slope" step="0.05" min="0" max="3" value="1.00">
+        </div>
+        <div class="bvf-adv-row">
+          <label>截距</label><input type="number" id="bvf-adv-intercept" step="0.01" min="-0.5" max="0.5" value="0.00">
+        </div>
+        <div class="bvf-adv-row">
+          <label>高光</label><input type="number" id="bvf-adv-highlight" step="0.01" min="-1" max="1" value="0.00">
+        </div>
+        <div class="bvf-adv-row">
+          <label>阴影</label><input type="number" id="bvf-adv-shadow" step="0.01" min="-1" max="1" value="0.00">
+        </div>
+        <div class="bvf-adv-row">
+          <label>明朗</label><input type="number" id="bvf-adv-clarity" step="0.01" min="0" max="1" value="0.00">
+        </div>
+      </div>
+
+      <!-- feConvolveMatrix · 锐化核 -->
+      <div class="bvf-adv-group">
+        <div class="bvf-adv-group-title">feConvolveMatrix · 锐化核 3×3</div>
+        <div class="bvf-kernel-grid" id="bvf-kernel-grid">
+          <input type="number" id="bvf-k-00" step="0.001" value="0">
+          <input type="number" id="bvf-k-01" step="0.001" value="0">
+          <input type="number" id="bvf-k-02" step="0.001" value="0">
+          <input type="number" id="bvf-k-10" step="0.001" value="0">
+          <input type="number" id="bvf-k-11" step="0.001" value="1">
+          <input type="number" id="bvf-k-12" step="0.001" value="0">
+          <input type="number" id="bvf-k-20" step="0.001" value="0">
+          <input type="number" id="bvf-k-21" step="0.001" value="0">
+          <input type="number" id="bvf-k-22" step="0.001" value="0">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

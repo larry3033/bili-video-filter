@@ -1,0 +1,18 @@
+{
+    "name": "bili-video-filter",
+    "version": "0.1.0",
+    "description": "B站视频滤镜：曝光/对比/色温/锐化等8项专业调色+8组系统预设",
+    "scripts": {
+        "build": "bun build.ts",
+        "build:tm": "bun tools/build-for-tm.ts",
+        "release": "bun tools/release.ts"
+    },
+    "devDependencies": {
+        "@types/adm-zip": "^0.5.7",
+        "@types/html-minifier-terser": "^7.0.2",
+        "@types/node": "^24.10.1",
+        "adm-zip": "^0.5.16",
+        "esbuild": "^0.27.1",
+        "html-minifier-terser": "^7.2.0"
+    }
+}
