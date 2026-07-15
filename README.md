@@ -220,4 +220,4 @@ bun install && bun run build && bun run build:tm
 
 ## License
 
-MIT — 与 BCMNP ([B站治好了我的颈椎病](https://github.com/heyManNice/bili-cured-my-neck-pain)) 一致。
+MIT
